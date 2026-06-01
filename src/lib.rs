@@ -20,6 +20,7 @@ impl<F: FnOnce()> Drop for Defer<F> {
     }
 }
 
+#[macro_export]
 macro_rules! defer {
     ($($body:tt)*) => {
         let _defer = Defer::new(|| { $($body)* });
